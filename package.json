@@ -1,0 +1,43 @@
+{
+  "name": "survey-gs",
+  "version": "1.0.0",
+  "description": "A Social Website for RBK",
+  "author": "Extrus Team",
+  "contributors": [
+    "Tawfik kahwaje <tawfik.kahwaje@gmail.com>",
+    "Hussam Eddin Alhendi <housam35@gmail.com>",
+    "Bader Khalifeh <bader.a.khalifeh@gmail.com>"
+  ],
+  "scripts": {
+    "postinstall":"npm install -g bower; bower install",
+    "lint": "jscs ./"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Assyrians/survey-GS.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Assyrians/survey-GS.git/issues"
+  },
+  "license": "UNLICENSED",
+  "private": true,
+  "devDependencies": {
+    "bower":"latest",
+    "browser-sync": "^1.5.7",
+    "clone-stats": "0.0.1",
+    "gulp": "^3.8.5",
+    "gulp-nodemon": "^1.0.4",
+    "gulp-shell": "^0.2.7",
+    "pre-commit": "^1.1.1"
+  },
+  "dependencies": {
+    "bcrypt-nodejs": "0.0.3",
+    "bluebird": "^1.0.8",
+    "body-parser": "^1.4.3",
+    "express": "^4.4.5",
+    "jwt-simple": "^0.2.0",
+    "mongoose": "^4.1.0",
+    "morgan": "^1.1.1",
+    "request": "^2.36.0"
+  }
+}
