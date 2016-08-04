@@ -12,7 +12,6 @@ module.exports = {
   },
 
   getOneBranch : function (req , res) {
-    console.log('asdfghjkl')
     Branch.find({_id : req.params.id}).exec(function (error , branch) {
       if(error)
         res.status(500).send(error);
