@@ -157,7 +157,8 @@ angular.module('GreenSaloon.services', [])
 })
 
 .factory('Question', function ($http) {
-	
+
+	// a fuction for getting all questions
 	var getAllQuestions = function () {
 		return $http({
 			method: 'GET',
@@ -168,6 +169,7 @@ angular.module('GreenSaloon.services', [])
 		});
 	};
 
+	// a function for getting one question depending on the id
 	var getOneQuestion = function (id) {
 		return $http({
 			method: 'GET',
