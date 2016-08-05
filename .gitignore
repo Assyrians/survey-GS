@@ -28,7 +28,18 @@ build/Release
 
 # Dependency directories
 node_modules
+db
+client/lib
 jspm_packages
+
+# Build files
+dist
+
+# Floobits
+.floo
+.floobit
+.floo
+.flooignore
 
 # Optional npm cache directory
 .npm
