@@ -1,0 +1,69 @@
+<div id="container" style="margin-right: 15%; margin-left: 15%; width: 70%;">
+<table class="table  table-bordered table-striped" id="selectTable" style="color:#000; text-align: center; font-size:large;">
+  <tr>
+    <td  id="branchTd" colspan="2">
+      <select class="form-recurring-control noBorder" ng-model="branchList"  ng-change="getReport()" style="width:80% ; text-indent: 40%; font-size: large;">
+      <!-- get branches from the server -->
+      <option class="optionClass"></option>
+      <option class="optionClass">جرش</option>
+      <option class="optionClass">باب عمان</option>
+      <option class="optionClass">المفرق</option>
+      <option class="optionClass">عجلون</option>
+      <option class="optionClass">كفرنجه</option>
+      <option class="optionClass">البقعة</option>
+      <option class="optionClass">البقعة الشوؤن</option>
+      <option class="optionClass">المفرق الهاشمي</option>
+      </select>
+    </td>
+    <td style="padding-top: 1.3%;" colspan="2">اسم الفرع</td>
+  </tr>
+
+  <tr>
+    <td><p>
+      <md-content>
+      <md-datepicker ng-model="datepickerEnd" md-placeholder="Enter date"
+        ng-change="test()">
+      </md-datepicker>
+      </md-content>
+    </p></td>
+    <td>الى</td>
+    <td><p>
+      <md-content>
+      <md-datepicker ng-model="datepickerStart" md-placeholder="Enter date"
+        ng-change="test()">
+      </md-datepicker>
+      </md-content>
+    </p></td>
+    <td>من</td>
+  </tr>
+  <tr>
+    <td  style="width : 100%" colspan="4"> <button  type="button" class="btn btn-default" style="font-size: x-large; width : 100%" ng-click="getReport()">عرض</button></td>
+  </tr>
+</table>
+
+<table class="table table-bordered table-hover monthlyTable" id="monthlyTable">
+  <tr>
+    <td id="monthAvg" td2Table> </td>
+    <td class="tdTable">عدد الزيارات</td>
+  </tr>
+  <tr>
+    <td id="avg" td2Table> </td>
+    <td class="tdTable">المعدل</td>
+  </tr>
+  <tr>
+    <td id="best" td2Table> </td>
+    <td class="tdTable">اعلى علامة</td>
+  </tr>
+  <tr>
+    <td id="worst" td2Table> </td>
+    <td class="tdTable">اقل علامة</td>
+  </tr>
+</table>
+
+<ul class="nav" id="reportsList" style="text-align:right ; font-size: large; display:block">
+    <!-- todo add list of reports dates -->
+</ul>
+
+
+
+</div>
