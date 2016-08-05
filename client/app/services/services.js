@@ -197,3 +197,21 @@ angular.module('GreenSaloon.services', [])
 		getSetOfQuestion: getSetOfQuestion
 	}
 })
+
+.factory('Branch', function ($http) {
+	
+	// a fuction for getting all branches
+	var getAllBranches = function () {
+		return $http({
+			method: 'GET',
+			url: '/api/branches'
+		})
+		.then(function (res) {
+			return res.data;
+		})
+	};
+
+	return {
+		getAllBranches: getAllBranches
+	}
+})
