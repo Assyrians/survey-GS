@@ -135,7 +135,7 @@ angular.module('GreenSaloon.services', [])
     signin: signin,
     signout: signout,
     isAuth: isAuth
-	}
+	};
 })
 
 .factory('User', function ($http) {
