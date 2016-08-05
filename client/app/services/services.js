@@ -146,8 +146,8 @@ angular.module('GreenSaloon.services', [])
 			method: 'GET',
 			url: '/api/users/user/'+ userID
 		})
-		.then(function(res){
-			return res;
+		.then(function (res){
+			return res.data;
 		});
 	}
 
@@ -158,17 +158,28 @@ angular.module('GreenSaloon.services', [])
 
 .factory('Question', function ($http) {
 	
-	var getAllQuestion = function () {
+	var getAllQuestions = function () {
 		return $http({
 			method: 'GET',
 			url: '/api/questions'
 		})
-		.then(function(res){
-			return res;
+		.then(function (res){
+			return res.data;
 		});
-	}
+	};
+
+	var getOneQuestion = function (id) {
+		return $http({
+			method: 'GET',
+			url: '/api/forms/form/' + id
+		})
+		.then(function (res) {
+			return res.data;
+		})
+	};
 
 	return {
-		getAllQuestion: getAllQuestion
+		getAllQuestions: getAllQuestions,
+		getOneQuestion: getOneQuestion
 	}
 })
