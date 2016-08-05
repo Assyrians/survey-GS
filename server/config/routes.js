@@ -3,6 +3,7 @@ var userController = require('../users/userController.js');
 var branchController = require('../branches/branchController.js');
 var questionController = require('../questions/questionController.js');
 var formController = require('../forms/formController.js');
+var reportController = require('../reports/reportController.js');
 
 // exporting DB controller's functions
 module.exports = function(app, express){
@@ -22,8 +23,15 @@ module.exports = function(app, express){
 
 
 	app.get('/api/forms' , formController.getAllForms);
-	app.get('/api/forms/form/:id' , formController.getAllForms);
-	app.post('/api/forms' , formController.getAllForms);
+	app.get('/api/forms/form/:id' , formController.getOneForm);
+	app.post('/api/forms' , formController.getSetOfForm);
+
+
+	app.get('/api/reports' , reportController.getAllReports);
+	app.get('/api/reports/report/:id' , reportController.getOneReport);
+	app.post('/api/reports' , reportController.getSetOfReport);
+	app.post('/api/reports/create' , reportController.newReport);
+	app.get('/api/reports/branch/:id' , reportController.getAllReportsByBranchId);
 
 
 
