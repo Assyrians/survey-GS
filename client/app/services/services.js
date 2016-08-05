@@ -111,7 +111,7 @@ angular.module('GreenSaloon.services', [])
 })
 .factory('Auth', function ($http, $location, $window) {
 
-  var signinUser = function (user) {
+  var signin = function (user) {
     return $http({
       method: 'POST',
       url: '/api/users/signin',
