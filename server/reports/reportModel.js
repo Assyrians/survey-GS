@@ -18,7 +18,7 @@ var Report = mongoose.model('Report' , reportSchema);
 // Test Report
 
 // var newReport = new Report({
-// 	date : new Date() ,
+// 	date : new Date(),
 // 	branchManagerName : "test branchManagerName",
 // 	branchControllerName : "test branchControllerName",
 // 	branch : '57a3b694f6cafc7c180ee8f8',
