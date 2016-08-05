@@ -211,7 +211,19 @@ angular.module('GreenSaloon.services', [])
 		})
 	};
 
+	// a function for getting one branch depending on the branchID
+	var getOneBranch = function (branchID) {
+		return $http({
+			method: 'GET',
+			url: '/api/branches/branch/' + branchID
+		})
+		.then(function (res) {
+			return res.data;
+		})
+	};
+
 	return {
-		getAllBranches: getAllBranches
+		getAllBranches: getAllBranches,
+		getOneBranch: getOneBranch
 	}
 })
