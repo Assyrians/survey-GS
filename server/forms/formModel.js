@@ -3,12 +3,13 @@ var mongoose = require('mongoose');
 var schema =mongoose.Schema;
 
 var formSchema = new schema({
-	type : String ,
+	type : String,
 	questions : [{ type: schema.Types.ObjectId , ref : 'Question'}]
 });
 
 var Form = mongoose.model('Form' , formSchema);
 
+module.exports = Form;
 
 // Form test
 // var newForm = new Form({
@@ -19,5 +20,3 @@ var Form = mongoose.model('Form' , formSchema);
 // newForm.save(function (err , form) {
 // 	console.log(form);
 // })
-
-module.exports = Form;
