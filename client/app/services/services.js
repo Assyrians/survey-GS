@@ -145,9 +145,55 @@ angular.module('GreenSaloon.services', [])
 		return $http({
 			method: 'GET',
 			url: '/api/users/user/'+ userID
-		}) 
+		})
+		.then(function (res){
+			return res.data;
+		});
 	}
+
 	return {
 		getOne: getOne
 	};
+})
+
+.factory('Question', function ($http) {
+
+	// a fuction for getting all questions
+	var getAllQuestions = function () {
+		return $http({
+			method: 'GET',
+			url: '/api/questions'
+		})
+		.then(function (res){
+			return res.data;
+		});
+	};
+
+	// a function for getting one question depending on the id
+	var getOneQuestion = function (id) {
+		return $http({
+			method: 'GET',
+			url: '/api/questions/question/' + id 
+		})
+		.then(function (res) {
+			return res.data;
+		})
+	};
+
+	var getSetOfQuestion = function (arrayOfObjectIds) {
+		return $http({
+			method: 'POST',
+			url: '/api/questions',
+			data: arrayOfObjectIds
+		})
+		.then(function (res) {
+			return res.data;
+		})
+	}
+
+	return {
+		getAllQuestions: getAllQuestions,
+		getOneQuestion: getOneQuestion,
+		getSetOfQuestion: getSetOfQuestion
+	}
 })
