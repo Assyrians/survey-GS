@@ -138,3 +138,15 @@ angular.module('GreenSaloon.services', [])
 	}
 })
 
+.factory('User', function ($http) {
+	// a function for getting one user depending on the userID
+	var getOne = function (userID) {
+		return $http({
+			method: 'GET',
+			url: '/api/users/user/'+ userID
+		}) 
+	}
+	return {
+		getOne: getOne
+	};
+})
