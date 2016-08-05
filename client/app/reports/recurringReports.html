@@ -37,7 +37,7 @@
     <td>من</td>
   </tr>
   <tr>
-    <td  style="width : 100%" colspan="4"> <button  type="button" class="btn btn-default" style="font-size: x-large; width : 100%" ng-click="getReport()">عرض</button></td>
+    <td  style="width : 100%" colspan="4"> <button  type="button" class="btn btn-default" style="font-size: x-large; width : 100%" ng-click="getReports()">عرض</button></td>
   </tr>
 </table>
 
@@ -61,7 +61,7 @@
 </table>
 
 <ul class="nav" id="reportsList" style="text-align:right ; font-size: large; display:block">
-    <!-- todo add list of reports dates -->
+    <li ng-repeat="report in data.reports" ng-if="compareDates(datepickerStart,report.date)&&compareDates(report.date,datepickerEnd)"> {{convertDateFormat(report.date)}} </li>
 </ul>
 
 
