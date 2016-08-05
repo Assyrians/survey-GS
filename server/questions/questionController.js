@@ -1,6 +1,7 @@
 var Question = require('../questions/questionModel.js');
 
 module.exports = {
+
 	getAllQuestion : function ( req , res) {
 		Question.find().exec(function (err , questions) {
 			if(err)
@@ -19,7 +20,6 @@ module.exports = {
 		})
 	},
 
-
 	getSetOfQuestion : function (req , res) {
 		var arrayOfObjectIds=req.body.arrayOfObjectIds;
 		var arrayOfQuestionObject=[];
@@ -32,4 +32,5 @@ module.exports = {
 			})
 		}
 	}
-}
+
+};

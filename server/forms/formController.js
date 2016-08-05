@@ -1,6 +1,7 @@
 var Form = require('./formModel.js');
 
 module.exports = {
+
 	getAllForms : function (req , res ) {
 		Form.find().exec(function (err , forms) {
 			if(err)
@@ -31,4 +32,5 @@ module.exports = {
 			})
 		}
 	}
-}
+
+};

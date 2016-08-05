@@ -1,6 +1,7 @@
 var Report = require ('./reportModel.js')
 
 module.exports = {
+
 	getAllReports : function (req , res) {
 		Report.find().exec(function (err , reports) {
 			if(err)
@@ -8,7 +9,7 @@ module.exports = {
 			else
 				res.status(200).send(reports);
 		})
-	} ,
+	},
 
 	getOneReport : function (req ,res) {
 		Report.findOne({_id : req.params.id}).exec(function (err , report) {
@@ -17,7 +18,7 @@ module.exports = {
 			else
 				res.status(200).send(report);
 		})
-	} ,
+	},
 
 
 	getSetOfReport : function (req , res) {
@@ -31,10 +32,7 @@ module.exports = {
 				}
 			})
 		}
-	} , 
-
-
-
+	}, 
 
 	/* example of req.body for newReport function
 		{ 
@@ -57,8 +55,6 @@ module.exports = {
 		    ] 
 		} 
 	*/
-
-
 	newReport : function (req , res) {
 		var date = req.body.date;
 		var branchManagerName = req.body.branchManagerName;
@@ -84,7 +80,6 @@ module.exports = {
 		})
 	},
 
-
 	getAllReportsByBranchId :function (req , res) {
 		Report.find({branch : req.params.id}).exec(function (err , reports) {
 			if(err)
@@ -94,4 +89,4 @@ module.exports = {
 		})
 	}
 
-}
+};

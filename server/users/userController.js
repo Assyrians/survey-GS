@@ -3,20 +3,16 @@ var jwt = require('jwt-simple');
 
 module.exports = {
 
-	
-
   getOne : function(req,res){
     User.findOne({_id: req.params.id})
-        .exec(function(err, user){
-          console.log( req.params.id);
-          if(user){
-             //res.setHeader('Content-Type', 'application/json');
-            return res.status(200).send(user);
-          }
-        })
+      .exec(function(err, user){
+        console.log( req.params.id);
+        if(user){
+          //res.setHeader('Content-Type', 'application/json');
+          return res.status(200).send(user);
+        }
+      });
   },
-
-
 
   signin: function (req, res) {
     var username=req.body.username;
@@ -42,8 +38,6 @@ module.exports = {
       });
   },
 
-
-
   checkAuth: function (req, res) {
     // checking to see if the user is authenticated
     // grab the token in the header is any
@@ -66,8 +60,6 @@ module.exports = {
         });
     }
   }
-
-  
 
 };
 
