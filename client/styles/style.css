@@ -3,10 +3,6 @@
     text-align: center;
 }
 
-.form-control{
-    text-align: right;
-}
-
 .wrapper {    
   margin-top: 80px;
   margin-bottom: 20px;
@@ -25,7 +21,8 @@
   margin-bottom: 30px;
 }
 
-.form-control {
+.form-signin-control {
+  text-align: right;
   position: relative;
   font-size: 16px;
   height: auto;
@@ -53,4 +50,38 @@ input[type="password"] {
   background-image: -moz-linear-gradient(left, #c4e17f, #c4e17f 12.5%, #f7fdca 12.5%, #f7fdca 25%, #fecf71 25%, #fecf71 37.5%, #f0776c 37.5%, #f0776c 50%, #db9dbe 50%, #db9dbe 62.5%, #c49cde 62.5%, #c49cde 75%, #669ae1 75%, #669ae1 87.5%, #62c2e4 87.5%, #62c2e4);
   background-image: -o-linear-gradient(left, #c4e17f, #c4e17f 12.5%, #f7fdca 12.5%, #f7fdca 25%, #fecf71 25%, #fecf71 37.5%, #f0776c 37.5%, #f0776c 50%, #db9dbe 50%, #db9dbe 62.5%, #c49cde 62.5%, #c49cde 75%, #669ae1 75%, #669ae1 87.5%, #62c2e4 87.5%, #62c2e4);
   background-image: linear-gradient(to right, #c4e17f, #c4e17f 12.5%, #f7fdca 12.5%, #f7fdca 25%, #fecf71 25%, #fecf71 37.5%, #f0776c 37.5%, #f0776c 50%, #db9dbe 50%, #db9dbe 62.5%, #c49cde 62.5%, #c49cde 75%, #669ae1 75%, #669ae1 87.5%, #62c2e4 87.5%, #62c2e4);
+}
+
+.jumbotron{
+  text-align: right;
+}
+
+.form-recurring-control{
+  text-alonIndexLoadign: right;
+  height: 36px;
+  display: initial;
+  width: 40%;
+}
+
+.noBorder{
+  text-align:center;
+  border: none;
+  width: 100%;
+}
+
+.tdTable{
+  width: 20%;
+}
+
+.td2Table{
+  width: 30%;
+}
+
+.nav{
+  max-height: 200px;
+  overflow-y:scroll; 
+}
+
+.datepicker{
+  text-align: center;
 }
