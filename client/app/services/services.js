@@ -171,15 +171,27 @@ angular.module('GreenSaloon.services', [])
 	var getOneQuestion = function (id) {
 		return $http({
 			method: 'GET',
-			url: '/api/forms/form/' + id
+			url: '/api/questions/question/' + id 
 		})
 		.then(function (res) {
 			return res.data;
 		})
 	};
 
+	var getSetOfQuestion = function (arrayOfObjectIds) {
+		return $http({
+			method: 'POST',
+			url: '/api/questions',
+			data: arrayOfObjectIds
+		})
+		.then(function (res) {
+			return res.data;
+		})
+	}
+
 	return {
 		getAllQuestions: getAllQuestions,
-		getOneQuestion: getOneQuestion
+		getOneQuestion: getOneQuestion,
+		getSetOfQuestion: getSetOfQuestion
 	}
 })
