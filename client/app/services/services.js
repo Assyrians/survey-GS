@@ -110,7 +110,44 @@ angular.module('GreenSaloon.services', [])
 	};
 })
 .factory('Auth', function ($http, $location, $window) {
+
+  var signinUser = function (user) {
+    return $http({
+      method: 'POST',
+      url: '/api/users/signin',
+      data: user
+    })
+    .then(function (resp) {
+      return resp.data.token;
+    });
+  };
+
+  var isAuth = function () {
+    return !!$window.localStorage.getItem('com.GS');
+  };
+
+  var signout = function () {
+    $window.localStorage.removeItem('com.GS');
+    $location.path('/signin');
+  };
+
   return {
-  	
-  }
-});
+    signin: signin,
+    signout: signout,
+    isAuth: isAuth
+	};
+})
+
+.factory('User', function ($http) {
+
+	// a function for getting one user depending on the id
+	var getOne = function (userID) {
+		return $http({
+			method: 'GET',
+			url: '/api/users/user/'+ userID
+		}) 
+	}
+	return {
+		getOne: getOne
+	};
+})
