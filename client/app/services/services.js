@@ -137,7 +137,6 @@ angular.module('GreenSaloon.services', [])
     isAuth: isAuth
 	};
 })
-
 .factory('User', function ($http) {
 
 	// a function for getting one user depending on the id
@@ -197,7 +196,6 @@ angular.module('GreenSaloon.services', [])
 		getSetOfQuestion: getSetOfQuestion
 	}
 })
-
 .factory('Branch', function ($http) {
 	
 	// a fuction for getting all branches
@@ -226,4 +224,4 @@ angular.module('GreenSaloon.services', [])
 		getAllBranches: getAllBranches,
 		getOneBranch: getOneBranch
 	}
-})
+});

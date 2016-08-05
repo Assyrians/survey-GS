@@ -2,6 +2,7 @@ angular.module('GreenSaloon', [
   'GreenSaloon.services',
   'GreenSaloon.auth',
   'GreenSaloon.recurringReports',
+  'GreenSaloon.singleReportView',
   'ngRoute',
   'ngMaterial',
   'ngAnimate'
@@ -15,6 +16,10 @@ angular.module('GreenSaloon', [
     .when('/recurrings', {
       templateUrl: 'app/reports/recurringReports.html',
       controller: 'RecurringReportsController',
+    })
+    .when('/singleReport/:id',{
+      templateUrl: 'app/reports/singleReportView.html',
+      controller: 'singleReportViewController',
     })
     .otherwise({
       redirectTo: '/'

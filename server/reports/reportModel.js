@@ -4,7 +4,6 @@ var schema = mongoose.Schema;
 
 var reportSchema = new schema({
 	date : Date,
-	type: String,
 	branchManagerName : String,
 	branchControllerName : String,
 	branch : {type: schema.Types.ObjectId, ref : 'Branch'},
