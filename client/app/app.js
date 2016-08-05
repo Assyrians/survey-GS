@@ -1,13 +1,20 @@
 angular.module('GreenSaloon', [
   'GreenSaloon.services',
   'GreenSaloon.auth',
-  'ngRoute'
+  'GreenSaloon.recurringReports',
+  'ngRoute',
+  'ngMaterial',
+  'ngAnimate'
 ])
 .config(function ($routeProvider, $httpProvider) {
   $routeProvider
     .when('/signin', {
       templateUrl: 'app/auth/signin.html',
       controller: 'AuthController',
+    })
+    .when('/recurrings', {
+      templateUrl: 'app/reports/recurringReports.html',
+      controller: 'RecurringReportsController',
     })
     .otherwise({
       redirectTo: '/'
