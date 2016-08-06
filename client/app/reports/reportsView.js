@@ -1,11 +1,14 @@
 angular.module('GreenSaloon.reportsView', [])
 
-.controller('reportsViewController', function ($scope, $window, $location, $routeParams, Reports, Branch, Forms, DateFormat) {
+.controller('reportsViewController', function ($scope, $window, $location, $routeParams,
+	Reports, Question, Branch, Forms, DateFormat) {
  	
 	var formType = 'Daily';
 	if($routeParams.RecId){
 		formType = 'Recurring';
 	}
+
+	var formObject, generalReport;
 
  	$scope.reportDateClicked = false;
 
@@ -33,7 +36,7 @@ angular.module('GreenSaloon.reportsView', [])
 		}
 		Forms.getAll()
 		.then(function(forms){
-			var getFunc, formObject;
+			var getFunc;
 			// getting the id of the recurring form
 			for(var i=0; i<forms.length; i++){
 				if(forms[i].type === formType){
@@ -85,6 +88,45 @@ angular.module('GreenSaloon.reportsView', [])
 			.catch(function(error){
 				console.log(error);
 			})
+		})
+		.catch(function(error){
+			console.log(error);
+		});
+	};
+
+	$scope.getGeneralReport = function(){
+		Question.getSetOfQuestion(formObject.questions)
+		.then(function(questions){
+			for(var i=0; i<questions.length; i++){
+				questions[i].numOfYes = 0;
+				questions[i].numOfNo = 0;
+				for(var j=0; j<$scope.data.reports.length; j++){
+					for(var k=0; k<$scope.data.reports[j].answer.length; k++){
+						if($scope.data.reports[j].answer[k].question === questions[i]._id){
+							if($scope.data.reports[j].answer[k].answer === 'true'){
+								questions[i].numOfYes++;
+								break;
+							} else {
+								questions[i].numOfNo++;
+							}
+						}
+					}
+				}
+			}
+
+			gerneralReport = {
+				questions : questions,
+				avgMark: $scope.avgMark,
+				bestMark: $scope.bestMark,
+				worstMark: $scope.worstMark,
+				monthlyVisits: $scope.monthlyVisits
+			}
+
+			//$window.generalReport = generalReport;
+			// $rootScope.$broadcast('General_Report',generalReport);
+			// BroadCasting.broadcast(generalReport);
+			
+			$location.path('/grv');
 		})
 		.catch(function(error){
 			console.log(error);
