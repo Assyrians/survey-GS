@@ -1,23 +1,39 @@
 angular.module('GreenSaloon', [
   'GreenSaloon.services',
   'GreenSaloon.auth',
-  'GreenSaloon.recurringReports',
+  'GreenSaloon.reportsView',
   'GreenSaloon.singleReportView',
+  'GreenSaloon.newReport',
   'ngRoute',
   'ngMaterial',
   'ngAnimate'
 ])
 .config(function ($routeProvider, $httpProvider) {
   $routeProvider
+    .when('/',{
+      templateUrl: 'app/home/home.html'
+    })
     .when('/signin', {
       templateUrl: 'app/auth/signin.html',
       controller: 'AuthController',
     })
-    .when('/recurrings', {
-      templateUrl: 'app/reports/recurringReports.html',
-      controller: 'RecurringReportsController',
+    .when('/nrr/:RecId', {
+      templateUrl: 'app/reports/newReport.html',
+      controller: 'newReportController',
     })
-    .when('/singleReport/:id',{
+    .when('/ndr/:DayId', {
+      templateUrl: 'app/reports/newReport.html',
+      controller: 'newReportController',
+    })
+    .when('/rpv/:RecId', {
+      templateUrl: 'app/reports/reportsView.html',
+      controller: 'reportsViewController',
+    })
+    .when('/dpv/:DayId', {
+      templateUrl: 'app/reports/reportsView.html',
+      controller: 'reportsViewController',
+    })
+    .when('/srv/:id',{
       templateUrl: 'app/reports/singleReportView.html',
       controller: 'singleReportViewController',
     })
