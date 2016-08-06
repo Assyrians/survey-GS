@@ -58,8 +58,34 @@ angular.module('GreenSaloon.newReport', [])
 	};
 
 	$scope.sendReport = function(){
-		console.log($scope.branchManger);
-		console.log($scope.branchCare);
+
+		var answers = [];
+		for(var i=0; i<$scope.questions.length; i++){
+			var newAnswer = {
+				question: $scope.questions[i]._id,
+				answer: $('#'+$scope.questions[i]._id+'Yes')[0].checked ? true : false,
+				details: $('#'+$scope.questions[i]._id+'Details')[0].value
+			};
+			answers.push(newAnswer);
+		}
+
+		var newReport = {
+			date: new Date(),
+			branchManagerName: $scope.branchManger,
+			branchControllerName: $scope.branchCare,
+			branch: $('#branchSelect')[0].value,
+			form: formObject._id,
+			answer: answers
+		}
+
+		Reports.addOne(newReport)
+		.then(function(result){
+			console.log('Success');
+			$location.path('/');
+		})
+		.catch(function(error){
+			console.log(error);
+		});
 	};
 
 	$scope.initialize();

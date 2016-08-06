@@ -41,13 +41,13 @@
 	<div class="row">
 		<div class="col-lg-12">
 			<div class="input-group">
-				<input type="text" style="text-align : right" class="form-control" placeholder=" ... ملاحظات ">
+				<input type="text" id="{{question._id+'Details'}}" style="text-align : right" class="form-control" placeholder=" ... ملاحظات "/>
 				<span class="input-group-btn">
 					<label class="btn btn-danger">
-						<input type="radio" value= "false" autocomplete="off"/>&nbsp;&nbsp;لا&nbsp;&nbsp;
+						<input type="radio" id="{{question._id+'No'}}" name="{{question._id+'YesNoButtons'}}" />&nbsp;&nbsp;لا&nbsp;&nbsp;
 					</label>
 					<label class="btn btn-success">
-						<input type="radio" value= "true" autocomplete="off"/>&nbsp;&nbsp;نعم&nbsp;&nbsp;
+						<input type="radio" id="{{question._id+'Yes'}}" name="{{question._id+'YesNoButtons'}}"/>&nbsp;&nbsp;نعم&nbsp;&nbsp;
 					</label>
 				</span>
 			</div>
