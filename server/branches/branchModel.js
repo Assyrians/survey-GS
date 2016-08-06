@@ -11,19 +11,3 @@ var branchSchema = new Schema({
 var Branch = mongoose.model('Branch' , branchSchema);
 
 module.exports = Branch;
-
-// test Branch
-// var newBranch = new Branch({
-// 	branchName : "Test Branch"
-// });
-
-// newBranch.save(function (err,newBranch) {
-// 	console.log(newBranch);
-// })
-
-
-
-
-
-
-
