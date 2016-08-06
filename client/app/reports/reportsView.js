@@ -1,6 +1,6 @@
-angular.module('GreenSaloon.recurringReports', [])
+angular.module('GreenSaloon.reportsView', [])
 
-.controller('RecurringReportsController', function ($scope, $window, $location, Reports, Branch, Forms) {
+.controller('reportsViewController', function ($scope, $window, $location, Reports, Branch, Forms) {
  	
  	$scope.reportDateClicked = false;
 
