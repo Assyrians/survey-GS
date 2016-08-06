@@ -15,14 +15,3 @@ var userSchema = new Schema({
 var User = mongoose.model('User' , userSchema);
 
 module.exports = User;
-
-// test user
-// var newUser=new User({
-// 	username : "admin",
-// 	password : "admin",
-// 	email : "admin@gmail.com"
-// });
-
-// newUser.save(function (err,newUser) {
-// 	console.log(newUser);
-// })
