@@ -1,13 +1,47 @@
 angular.module('GreenSaloon', [
   'GreenSaloon.services',
   'GreenSaloon.auth',
-  'ngRoute'
+  'GreenSaloon.reportsView',
+  'GreenSaloon.singleReportView',
+  'GreenSaloon.newReport',
+  'ngRoute',
+  'ngMaterial',
+  'ngAnimate'
 ])
 .config(function ($routeProvider, $httpProvider) {
   $routeProvider
+    .when('/',{
+      templateUrl: 'app/home/home.html',
+      authenticate: true
+    })
     .when('/signin', {
       templateUrl: 'app/auth/signin.html',
-      controller: 'AuthController',
+      controller: 'AuthController'
+    })
+    .when('/nrr/:RecId', {
+      templateUrl: 'app/reports/newReport.html',
+      controller: 'newReportController',
+      authenticate: true
+    })
+    .when('/ndr/:DayId', {
+      templateUrl: 'app/reports/newReport.html',
+      controller: 'newReportController',
+      authenticate: true
+    })
+    .when('/rpv/:RecId', {
+      templateUrl: 'app/reports/reportsView.html',
+      controller: 'reportsViewController',
+      authenticate: true
+    })
+    .when('/dpv/:DayId', {
+      templateUrl: 'app/reports/reportsView.html',
+      controller: 'reportsViewController',
+      authenticate: true
+    })
+    .when('/srv/:id',{
+      templateUrl: 'app/reports/singleReportView.html',
+      controller: 'singleReportViewController',
+      authenticate: true
     })
     .otherwise({
       redirectTo: '/'
@@ -24,7 +58,7 @@ angular.module('GreenSaloon', [
   // then add it to the header so the server can validate the request
   var attach = {
     request: function (object) {
-      var jwt = $window.localStorage.getItem('com.Survey-GS');
+      var jwt = $window.localStorage.getItem('com.GS');
       if (jwt) {
         object.headers['x-access-token'] = jwt;
       }
@@ -44,7 +78,7 @@ angular.module('GreenSaloon', [
   // if it's not valid, we then redirect back to homePage
   $rootScope.$on('$routeChangeStart', function (evt, next, current) {
     if (next.$$route && next.$$route.authenticate && !Auth.isAuth()) {
-      $location.path('/');
+      $location.path('/signin');
     }
   });
 });

@@ -1,0 +1,100 @@
+<div id="container" style="margin-right: 15%; margin-left: 15%; width: 70%;">
+<table class="table  table-bordered table-striped" id="selectTable" style="color:#000; text-align: center; font-size:large;">
+  <tr>
+    <td  id="branchTd" colspan="2">
+      <select class="form-recurring-control noBorder" ng-model="branchList"  ng-change="getReport()" style="width:80% ; text-indent: 40%; font-size: large;">
+      <option ng-repeat="branch in data.branches" class="optionClass" value="{{branch._id}}">{{branch.branchName}}</option>
+      </select>
+    </td>
+    <td style="padding-top: 1.3%;" colspan="2">اسم الفرع</td>
+  </tr>
+
+  <tr>
+    <td><p>
+      <md-content>
+      <md-datepicker ng-model="datepickerEnd" md-placeholder="Enter date">
+      </md-datepicker>
+      </md-content>
+    </p></td>
+    <td>الى</td>
+    <td><p>
+      <md-content>
+      <md-datepicker ng-model="datepickerStart" md-placeholder="Enter date">
+      </md-datepicker>
+      </md-content>
+    </p></td>
+    <td>من</td>
+  </tr>
+  <tr>
+    <td  style="width : 100%" colspan="4"> <button  type="button" class="btn btn-default" style="font-size: x-large; width : 100%" ng-click="getReports()">عرض</button></td>
+  </tr>
+</table>
+
+<table class="table table-bordered table-hover monthlyTable" id="monthlyTable">
+  <tr>
+    <td class="td2Table">{{monthlyVisits}}</td>
+    <td class="tdTable">عدد الزيارات</td>
+  </tr>
+  <tr>
+    <td class="td2Table">{{avgMark}}</td>
+    <td class="tdTable">المعدل</td>
+  </tr>
+  <tr>
+    <td class="td2Table">{{bestMark}}</td>
+    <td class="tdTable">اعلى علامة</td>
+  </tr>
+  <tr>
+    <td class="td2Table">{{worstMark}}</td>
+    <td class="tdTable">اقل علامة</td>
+  </tr>
+</table>
+
+<ul class="nav" id="reportsList" style="text-align:right ; font-size: large; display:block">
+    <li ng-repeat="report in data.reports" ng-if="compareDates(datepickerStart,report.date)&&compareDates(report.date,datepickerEnd)" ng-click="showDetails(report)">{{convertDateFormat(report.date)}}</li>
+</ul>
+
+<table class="table table-bordered table-hover reportTabe" ng-if="reportDateClicked" id="reportTable">
+  <tr>       
+    <td class="td2Table">{{convertDateFormat(data.detailedReport.date)}}</td>
+    <td class="tdTable">التاريخ</td>
+    <td class="td2Table">{{data.detailedReport.mark}}</td>
+    <td class="tdTable">العلامة</td>
+  </tr>
+
+  <tr>
+    <td class="td2Table">{{getDateDay(data.detailedReport.date)}}</td>
+    <td class="tdTable">اليوم</td>
+    <td class="td2Table">{{getDateTime(data.detailedReport.date)}}</td>
+    <td class="tdTable">الوقت</td>
+  </tr>
+
+  <tr>
+    <td class="td2Table">{{data.detailedReport.numOfYes}}</td>
+    <td class="tdTable">نعم #</td>
+    <td class="td2Table">{{data.detailedReport.numOfNo}}</td>
+    <td class="tdTable">لا #</td>
+  </tr>
+
+  <tr>
+    <td class="td2Table">{{data.detailedReport.branchManagerName}}</td>
+    <td class="tdTable">مدير الفرع</td>
+    <td class="td2Table">{{data.detailedReport.branchControllerName}}</td>
+    <td class="tdTable">مراقب الفروع</td>
+  </tr>
+
+  <tr>
+    <td colspan="4">
+      <a class="btn btn-primary" style="width: 100%;" href="#/srv/{{data.detailedReport._id}}">التفاصيل</a>
+    </td>
+  </tr>
+</table>
+
+<table class="table table-bordered table-hover reportTabe" ng-if="!reportDateClicked&&data.reports" id="reportTable">
+  <tr>
+  <td>
+    <input type="button" class="btn btn-primary" value="التقرير الكلي" style="width: 100%;" ng-click="navigateToPage()"/>
+  </td>
+  </tr>
+</table>
+
+</div>
