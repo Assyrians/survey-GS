@@ -1,7 +1,12 @@
 angular.module('GreenSaloon.reportsView', [])
 
-.controller('reportsViewController', function ($scope, $window, $location, Reports, Branch, Forms, DateFormat) {
+.controller('reportsViewController', function ($scope, $window, $location, $routeParams, Reports, Branch, Forms, DateFormat) {
  	
+	var formType = 'Daily';
+	if($routeParams.RecId){
+		formType = 'Recurring';
+	}
+
  	$scope.reportDateClicked = false;
 
  	$scope.datepickerStart = new Date();
@@ -31,7 +36,7 @@ angular.module('GreenSaloon.reportsView', [])
 			var getFunc, formObject;
 			// getting the id of the recurring form
 			for(var i=0; i<forms.length; i++){
-				if(forms[i].type === 'Daily'){
+				if(forms[i].type === formType){
 					formObject = forms[i];
 					break;
 				}
