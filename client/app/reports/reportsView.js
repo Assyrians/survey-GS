@@ -1,12 +1,14 @@
 angular.module('GreenSaloon.reportsView', [])
 
-.controller('reportsViewController', function ($scope, $window, $location, Reports, Branch, Forms) {
+.controller('reportsViewController', function ($scope, $window, $location, Reports, Branch, Forms, DateFormat) {
  	
  	$scope.reportDateClicked = false;
 
  	$scope.datepickerStart = new Date();
  	
  	$scope.datepickerEnd = new Date();
+
+ 	$scope.convertDateFormat = DateFormat.convertDateFormat;
 	
 	$scope.data = {};
 
@@ -18,57 +20,6 @@ angular.module('GreenSaloon.reportsView', [])
 		.catch(function(error){
 			console.log(error);
 		});
-	};
-
-	// a function that returns true if the first date is 
-	// older than the other, and returns false otherwise
-	$scope.compareDates = function(olderDate, newerDate){
-		olderDate = new Date(olderDate);
-		newerDate = new Date(newerDate);
-
-		if(olderDate.getFullYear() > newerDate.getFullYear()){
-			return false;
-		}
-		if(olderDate.getMonth() > newerDate.getMonth()){
-			return false;
-		}
-		if(olderDate.getDate() > newerDate.getDate()){
-			return false;
-		}
-		return true;
-	};
-
-	$scope.convertDateFormat = function(date){
-		var date = new Date(date);
-		return date.getDate() + '/' + (date.getMonth() + 1) + '/' + date.getFullYear();
-	};
-
-	$scope.getDateTime = function(date){
-		var date = new Date(date);
-		var hours = date.getHours();
-		var minutes = date.getMinutes();
-		return hours+':'+minutes;
-	};
-
-	$scope.getDateDay = function(date){
-		var date = new Date(date);
-		var day = date.getDay();
-		switch(day){
-			case 0:
-				return 'الأحد';
-			case 1:
-				return 'الاثنين';
-			case 2:
-				return 'الثلاثاء';
-			case 3:
-				return 'الأربعاء';
-			case 4:
-				return 'الخميس';
-			case 5:
-				return 'الجمعة';
-			case 6:
-				return 'السبت';
-		};
 	};
 
 	$scope.getReports = function(branchId){
@@ -97,8 +48,8 @@ angular.module('GreenSaloon.reportsView', [])
 				// getting reports that match the query only
 				for(var i=0; i<reports.length; i++){
 					if(reports[i].form === formObject._id 
-						&& $scope.compareDates($scope.datepickerStart,reports[i].date)
-						&& $scope.compareDates(reports[i].date,$scope.datepickerEnd)
+						&& DateFormat.compareDates($scope.datepickerStart,reports[i].date)
+						&& DateFormat.compareDates(reports[i].date,$scope.datepickerEnd)
 					){
 						Queryflag = true;
 						// getting each report mark
@@ -133,15 +84,6 @@ angular.module('GreenSaloon.reportsView', [])
 		.catch(function(error){
 			console.log(error);
 		});
-	};
-
-	$scope.showDetails = function(report){
-		$scope.reportDateClicked = !$scope.reportDateClicked;
-		$scope.data.detailedReport = report;
-	};
-
-	$scope.navigateToPage = function(report){
-		console.log(report);
 	};
 
 	$scope.intialize();

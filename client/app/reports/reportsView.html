@@ -50,44 +50,10 @@
 </table>
 
 <ul class="nav" id="reportsList" style="text-align:right ; font-size: large; display:block">
-    <li ng-repeat="report in data.reports" ng-if="compareDates(datepickerStart,report.date)&&compareDates(report.date,datepickerEnd)" ng-click="showDetails(report)">{{convertDateFormat(report.date)}}</li>
+    <li ng-repeat="report in data.reports">
+    <a href="#/srv/{{report._id}}">{{convertDateFormat(report.date)}}</a>
+    </li>
 </ul>
-
-<table class="table table-bordered table-hover reportTabe" ng-if="reportDateClicked" id="reportTable">
-  <tr>       
-    <td class="td2Table">{{convertDateFormat(data.detailedReport.date)}}</td>
-    <td class="tdTable">التاريخ</td>
-    <td class="td2Table">{{data.detailedReport.mark}}</td>
-    <td class="tdTable">العلامة</td>
-  </tr>
-
-  <tr>
-    <td class="td2Table">{{getDateDay(data.detailedReport.date)}}</td>
-    <td class="tdTable">اليوم</td>
-    <td class="td2Table">{{getDateTime(data.detailedReport.date)}}</td>
-    <td class="tdTable">الوقت</td>
-  </tr>
-
-  <tr>
-    <td class="td2Table">{{data.detailedReport.numOfYes}}</td>
-    <td class="tdTable">نعم #</td>
-    <td class="td2Table">{{data.detailedReport.numOfNo}}</td>
-    <td class="tdTable">لا #</td>
-  </tr>
-
-  <tr>
-    <td class="td2Table">{{data.detailedReport.branchManagerName}}</td>
-    <td class="tdTable">مدير الفرع</td>
-    <td class="td2Table">{{data.detailedReport.branchControllerName}}</td>
-    <td class="tdTable">مراقب الفروع</td>
-  </tr>
-
-  <tr>
-    <td colspan="4">
-      <a class="btn btn-primary" style="width: 100%;" href="#/srv/{{data.detailedReport._id}}">التفاصيل</a>
-    </td>
-  </tr>
-</table>
 
 <table class="table table-bordered table-hover reportTabe" ng-if="!reportDateClicked&&data.reports" id="reportTable">
   <tr>

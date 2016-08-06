@@ -224,4 +224,63 @@ angular.module('GreenSaloon.services', [])
 		getAllBranches: getAllBranches,
 		getOneBranch: getOneBranch
 	}
+})
+.factory('DateFormat', function(){
+	// a function that returns true if the first date is 
+	// older than the other, and returns false otherwise
+	var compareDates = function(olderDate, newerDate){
+		olderDate = new Date(olderDate);
+		newerDate = new Date(newerDate);
+
+		if(olderDate.getFullYear() > newerDate.getFullYear()){
+			return false;
+		}
+		if(olderDate.getMonth() > newerDate.getMonth()){
+			return false;
+		}
+		if(olderDate.getDate() > newerDate.getDate()){
+			return false;
+		}
+		return true;
+	};
+
+	var convertDateFormat = function(date){
+		var date = new Date(date);
+		return date.getDate() + '/' + (date.getMonth() + 1) + '/' + date.getFullYear();
+	};
+
+	var getDateTime = function(date){
+		var date = new Date(date);
+		var hours = date.getHours();
+		var minutes = date.getMinutes();
+		return hours+':'+minutes;
+	};
+
+	var getDateDay = function(date){
+		var date = new Date(date);
+		var day = date.getDay();
+		switch(day){
+			case 0:
+				return 'الأحد';
+			case 1:
+				return 'الاثنين';
+			case 2:
+				return 'الثلاثاء';
+			case 3:
+				return 'الأربعاء';
+			case 4:
+				return 'الخميس';
+			case 5:
+				return 'الجمعة';
+			case 6:
+				return 'السبت';
+		};
+	};
+
+	return {
+		compareDates: compareDates,
+		convertDateFormat: convertDateFormat,
+		getDateTime: getDateTime,
+		getDateDay: getDateDay
+	}
 });
