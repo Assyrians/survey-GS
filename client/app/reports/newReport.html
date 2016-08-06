@@ -1,0 +1,63 @@
+<div id="container" style="margin-right: 15%; margin-left: 15%; width: 70%;">
+
+<div ng-if="routeParams.DayId" class="page-header">
+	<h3>إدارة الجودة والنوعية</h3>
+	<h3>الجدول اليومي لمتابعة الشروط الصحية والنظافة</h3>
+</div>
+<div ng-if="routeParams.RecId" class="page-header">
+	<h3>إدارة التدقيق الداخلي</h3>
+    <h3>التقرير الدوري للتدقيق الداخلي للفروع</h3>
+</div>
+
+<table class="table  table-bordered table-striped reportTable">
+    <tr>
+	    <td>{{getCurrentTime()}}</td>
+	    <td style="padding-top: 1.3%;">الوقت</td>
+	    <td  id="branchTd">
+		    <select class="form-control center-block" id="branchSelect" style="width:80% ; text-indent: 30%; font-size: large;">
+		    <option ng-repeat="branch in branches" class="optionClass" value="{{branch._id}}">{{branch.branchName}}</option>
+		    </select>
+	    </td>
+	    <td style="padding-top: 1.3%;">اسم الفرع</td>
+	</tr>
+
+    <tr>
+        <td ><input type="text" ng-model="branchManger" class="noBorder" ></td>
+        <td style="padding-top: 1.3%;">مدير الفرع</td>
+        <td>{{getCurrentDate()}}</td>
+        <td style="padding-top: 1.3%;">التاريخ</td>
+    </tr>
+
+      <tr>
+        <td ><input type="text" ng-model="branchCare" class="noBorder">  </td>
+        <td style="padding-top: 1.3%;">مراقب الفروع</td> 
+        <td>{{getCurrentDay()}}</td>
+        <td style="padding-top: 1.3%;">اليوم</td>
+      </tr>
+</table>
+
+<div class="jumbotron" ng-repeat="question in questions">
+	<p>{{question.text}}</p>
+	<div class="row">
+		<div class="col-lg-12">
+			<div class="input-group">
+				<input type="text" style="text-align : right" class="form-control" placeholder=" ... ملاحظات ">
+				<span class="input-group-btn">
+					<label class="btn btn-danger">
+						<input type="radio" value= "false" autocomplete="off"/>&nbsp;&nbsp;لا&nbsp;&nbsp;
+					</label>
+					<label class="btn btn-success">
+						<input type="radio" value= "true" autocomplete="off"/>&nbsp;&nbsp;نعم&nbsp;&nbsp;
+					</label>
+				</span>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="jumbotron" style="text-align:center;">
+	<button class="btn btn-success btn-lg" ng-click="sendReport()" style="width: 100%">ارسال</button>
+</div>
+
+
+</div>
