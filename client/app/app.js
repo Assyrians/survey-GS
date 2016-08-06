@@ -3,6 +3,7 @@ angular.module('GreenSaloon', [
   'GreenSaloon.auth',
   'GreenSaloon.reportsView',
   'GreenSaloon.singleReportView',
+  'GreenSaloon.generalReportView',
   'GreenSaloon.newReport',
   'ngRoute',
   'ngMaterial',
@@ -41,6 +42,11 @@ angular.module('GreenSaloon', [
     .when('/srv/:id',{
       templateUrl: 'app/reports/singleReportView.html',
       controller: 'singleReportViewController',
+      authenticate: true
+    })
+    .when('/grv',{
+      templateUrl: 'app/reports/generalReportView.html',
+      controller: 'generalReportViewController',
       authenticate: true
     })
     .otherwise({
