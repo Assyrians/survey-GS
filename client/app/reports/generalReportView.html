@@ -1,0 +1,43 @@
+<div id="container" style="margin-right: 15%; margin-left: 15%; width: 70%;">
+
+<table class="table table-bordered table-hover monthlyTable" id="monthlyTable">
+  <tr>
+    <td class="td2Table">{{report.monthlyVisits}}</td>
+    <td class="tdTable">عدد الزيارات</td>
+  </tr>
+  <tr>
+    <td class="td2Table">{{report.avgMark}}</td>
+    <td class="tdTable">المعدل</td>
+  </tr>
+  <tr>
+    <td class="td2Table">{{report.bestMark}}</td>
+    <td class="tdTable">اعلى علامة</td>
+  </tr>
+  <tr>
+    <td class="td2Table">{{report.worstMark}}</td>
+    <td class="tdTable">اقل علامة</td>
+  </tr>
+</table>
+
+<table class="table table-bordered table-hover reportTable">
+  
+  <tr>
+    <td>لا</td>
+    <td>نعم</td>
+    <td style="text-align:center">نقاط التفتيش</td>
+    <td>التسلسل</td>
+  </tr>
+  
+  <tr ng-repeat="question in report.questions">
+    <td>{{question.numOfNo}}</td>
+    <td>{{question.numOfYes}}</td>
+    <td>{{question.text}}</td>
+    <td>{{question.questionNum}}</td>    
+  </tr>
+
+  <tr>
+    <td colspan="4" style="text-align: right;">طباعة</td>
+  </tr>
+</table>
+
+</div>

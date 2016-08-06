@@ -10,6 +10,8 @@ angular.module('GreenSaloon.reportsView', [])
 
 	var formObject, generalReport;
 
+	window.generalReport = {};
+
  	$scope.reportDateClicked = false;
 
  	$scope.datepickerStart = new Date();
@@ -100,6 +102,7 @@ angular.module('GreenSaloon.reportsView', [])
 			for(var i=0; i<questions.length; i++){
 				questions[i].numOfYes = 0;
 				questions[i].numOfNo = 0;
+				questions[i].questionNum = i+1;
 				for(var j=0; j<$scope.data.reports.length; j++){
 					for(var k=0; k<$scope.data.reports[j].answer.length; k++){
 						if($scope.data.reports[j].answer[k].question === questions[i]._id){
@@ -108,13 +111,14 @@ angular.module('GreenSaloon.reportsView', [])
 								break;
 							} else {
 								questions[i].numOfNo++;
+								break;
 							}
 						}
 					}
 				}
 			}
 
-			gerneralReport = {
+			generalReport = {
 				questions : questions,
 				avgMark: $scope.avgMark,
 				bestMark: $scope.bestMark,
@@ -122,10 +126,7 @@ angular.module('GreenSaloon.reportsView', [])
 				monthlyVisits: $scope.monthlyVisits
 			}
 
-			//$window.generalReport = generalReport;
-			// $rootScope.$broadcast('General_Report',generalReport);
-			// BroadCasting.broadcast(generalReport);
-			
+			window.generalReport = generalReport;
 			$location.path('/grv');
 		})
 		.catch(function(error){
