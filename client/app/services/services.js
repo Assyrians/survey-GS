@@ -67,11 +67,13 @@ angular.module('GreenSaloon.services', [])
 	};
 
 	// a function for setting reports
-	var set = function (array) {
+	var getSet = function (array) {
 		return $http({
 			method: 'POST',
 			url: '/api/reports',
-			data: array
+			data: {
+				arrayOfObjectIds: array
+			}
 		})
 		.then(function(res){
 			return res;
@@ -104,7 +106,7 @@ angular.module('GreenSaloon.services', [])
 	return {
 		getAll: getAll,
 		getOne: getOne,
-		set: set,
+		getSet: getSet,
 		addOne: addOne,
 		getAllByBranch: getAllByBranch
 	};
@@ -179,11 +181,13 @@ angular.module('GreenSaloon.services', [])
 		})
 	};
 
-	var getSetOfQuestion = function (arrayOfObjectIds) {
+	var getSetOfQuestion = function (array) {
 		return $http({
 			method: 'POST',
 			url: '/api/questions',
-			data: arrayOfObjectIds
+			data: {
+				arrayOfObjectIds: array
+			}
 		})
 		.then(function (res) {
 			return res.data;
@@ -223,5 +227,64 @@ angular.module('GreenSaloon.services', [])
 	return {
 		getAllBranches: getAllBranches,
 		getOneBranch: getOneBranch
+	}
+})
+.factory('DateFormat', function(){
+	// a function that returns true if the first date is 
+	// older than the other, and returns false otherwise
+	var compareDates = function(olderDate, newerDate){
+		olderDate = new Date(olderDate);
+		newerDate = new Date(newerDate);
+
+		if(olderDate.getFullYear() > newerDate.getFullYear()){
+			return false;
+		}
+		if(olderDate.getMonth() > newerDate.getMonth()){
+			return false;
+		}
+		if(olderDate.getDate() > newerDate.getDate()){
+			return false;
+		}
+		return true;
+	};
+
+	var convertDateFormat = function(date){
+		var date = new Date(date);
+		return date.getDate() + '/' + (date.getMonth() + 1) + '/' + date.getFullYear();
+	};
+
+	var getDateTime = function(date){
+		var date = new Date(date);
+		var hours = date.getHours();
+		var minutes = date.getMinutes();
+		return hours+':'+minutes;
+	};
+
+	var getDateDay = function(date){
+		var date = new Date(date);
+		var day = date.getDay();
+		switch(day){
+			case 0:
+				return 'الأحد';
+			case 1:
+				return 'الاثنين';
+			case 2:
+				return 'الثلاثاء';
+			case 3:
+				return 'الأربعاء';
+			case 4:
+				return 'الخميس';
+			case 5:
+				return 'الجمعة';
+			case 6:
+				return 'السبت';
+		};
+	};
+
+	return {
+		compareDates: compareDates,
+		convertDateFormat: convertDateFormat,
+		getDateTime: getDateTime,
+		getDateDay: getDateDay
 	}
 });

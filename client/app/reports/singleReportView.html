@@ -1,0 +1,58 @@
+<div id="container" style="margin-right: 15%; margin-left: 15%; width: 70%;">
+
+<table class="table table-bordered table-hover reportTable">
+  <tr>       
+    <td class="td2Table">{{convertDateFormat(report.date)}}</td>
+    <td class="tdTable">التاريخ</td>
+    <td class="td2Table">{{report.mark}}</td>
+    <td class="tdTable">العلامة</td>
+  </tr>
+
+  <tr>
+    <td class="td2Table">{{getDateDay(report.date)}}</td>
+    <td class="tdTable">اليوم</td>
+    <td class="td2Table">{{getDateTime(report.date)}}</td>
+    <td class="tdTable">الوقت</td>
+  </tr>
+
+  <tr>
+    <td class="td2Table">{{report.numOfYes}}</td>
+    <td class="tdTable">نعم #</td>
+    <td class="td2Table">{{report.numOfNo}}</td>
+    <td class="tdTable">لا #</td>
+  </tr>
+
+  <tr>
+    <td class="td2Table">{{report.branchManagerName}}</td>
+    <td class="tdTable">مدير الفرع</td>
+    <td class="td2Table">{{report.branchControllerName}}</td>
+    <td class="tdTable">مراقب الفروع</td>
+  </tr>
+</table>
+
+<table class="table table-bordered table-hover reportTable">
+  
+  <tr>
+    <td>لا</td>
+    <td>نعم</td>
+    <td style="text-align:center">نقاط التفتيش</td>
+    <td>التسلسل</td>
+  </tr>
+  
+  <tr ng-repeat="question in report.answer">
+    <td>
+      <span ng-if="question.answer==='false'"class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+    </td>
+    <td>
+      <span ng-if="question.answer==='true'" class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+    </td>
+    <td>{{question.questionBody}}</td>
+    <td>{{question.questionNum}}</td>    
+  </tr>
+
+  <tr>
+    <td colspan="4" style="text-align: right;">طباعة</td>
+  </tr>
+</table>
+
+</div>
