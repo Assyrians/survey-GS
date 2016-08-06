@@ -12,7 +12,7 @@ module.exports = {
 	},
 
 	getOneQuestion : function (req , res) {
-		Question.findOne({_id : req.params.id}).exec(function (err , question) {
+		Question.findOne({_id : req.params.id.toString()}).exec(function (err , question) {
 			if(err)
 				res.status(500).send(err);
 			else
