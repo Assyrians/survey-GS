@@ -67,11 +67,13 @@ angular.module('GreenSaloon.services', [])
 	};
 
 	// a function for setting reports
-	var set = function (array) {
+	var getSet = function (array) {
 		return $http({
 			method: 'POST',
 			url: '/api/reports',
-			data: array
+			data: {
+				arrayOfObjectIds: array
+			}
 		})
 		.then(function(res){
 			return res;
@@ -104,7 +106,7 @@ angular.module('GreenSaloon.services', [])
 	return {
 		getAll: getAll,
 		getOne: getOne,
-		set: set,
+		getSet: getSet,
 		addOne: addOne,
 		getAllByBranch: getAllByBranch
 	};
@@ -179,11 +181,13 @@ angular.module('GreenSaloon.services', [])
 		})
 	};
 
-	var getSetOfQuestion = function (arrayOfObjectIds) {
+	var getSetOfQuestion = function (array) {
 		return $http({
 			method: 'POST',
 			url: '/api/questions',
-			data: arrayOfObjectIds
+			data: {
+				arrayOfObjectIds: array
+			}
 		})
 		.then(function (res) {
 			return res.data;
