@@ -12,6 +12,8 @@ angular.module('GreenSaloon.reportsView', [])
 
 	window.generalReport = {};
 
+	$window.localStorage.removeItem('GeneralReport');
+
  	$scope.reportDateClicked = false;
 
  	$scope.datepickerStart = new Date();
@@ -86,6 +88,8 @@ angular.module('GreenSaloon.reportsView', [])
 				$scope.avgMark = Queryflag ? sumOfMarks/$scope.monthlyVisits : '-';
 				$scope.bestMark = Queryflag ? highestMark : '-';
 				$scope.worstMark = Queryflag ? lowestMark : '-';
+
+				$scope.generateGeneralReport();
 			})
 			.catch(function(error){
 				console.log(error);
@@ -96,7 +100,7 @@ angular.module('GreenSaloon.reportsView', [])
 		});
 	};
 
-	$scope.getGeneralReport = function(){
+	$scope.generateGeneralReport = function(){
 		Question.getSetOfQuestion(formObject.questions)
 		.then(function(questions){
 			for(var i=0; i<questions.length; i++){
@@ -126,8 +130,7 @@ angular.module('GreenSaloon.reportsView', [])
 				monthlyVisits: $scope.monthlyVisits
 			}
 
-			window.generalReport = generalReport;
-			$location.path('/grv');
+			$window.localStorage.setItem('GeneralReport', JSON.stringify(generalReport));
 		})
 		.catch(function(error){
 			console.log(error);
