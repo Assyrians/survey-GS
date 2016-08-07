@@ -5,7 +5,7 @@ angular.module('GreenSaloon.generalReportView', [])
 	$scope.report = {};
 
 	$scope.initialize = function(){
-		$scope.report = window.generalReport;
+		$scope.report = JSON.parse($window.localStorage.getItem('GeneralReport'));//window.generalReport;
 	}
 
 	$scope.initialize();
