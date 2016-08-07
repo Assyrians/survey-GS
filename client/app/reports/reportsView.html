@@ -51,7 +51,7 @@
 
 <ul class="nav" id="reportsList" style="text-align:right ; font-size: large; display:block">
     <li ng-repeat="report in data.reports">
-    <a href="#/srv/{{report._id}}">{{convertDateFormat(report.date)}}</a>
+    <a href="#/srv/{{report._id}}" target="_blank">{{convertDateFormat(report.date)}}</a>
     </li>
 </ul>
 
