@@ -41,13 +41,11 @@ angular.module('GreenSaloon', [
     })
     .when('/srv/:id',{
       templateUrl: 'app/reports/singleReportView.html',
-      controller: 'singleReportViewController',
-      authenticate: true
+      controller: 'singleReportViewController'
     })
     .when('/grv',{
       templateUrl: 'app/reports/generalReportView.html',
-      controller: 'generalReportViewController',
-      authenticate: true
+      controller: 'generalReportViewController'
     })
     .otherwise({
       redirectTo: '/'

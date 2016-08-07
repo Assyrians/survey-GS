@@ -1,8 +1,13 @@
 angular.module('GreenSaloon.singleReportView', [])
 
-.controller('singleReportViewController', function ($scope, $window, $location, $routeParams, Reports, Question, DateFormat) {
+.controller('singleReportViewController', function ($scope, $window, $location, $routeParams, 
+	Email, Reports, Question, DateFormat, Dialogs, $mdDialog, $mdMedia) {
  	
  	$scope.report = {};
+
+ 	$scope.email = 'housam993@gmail.com'
+
+ 	$scope.location = $location.path();
 
  	$scope.convertDateFormat = DateFormat.convertDateFormat;
 
@@ -51,5 +56,34 @@ angular.module('GreenSaloon.singleReportView', [])
  		})
  	};
 
+ 	// $scope.enterEmail = function (ev) {
+ 	// 	Dialogs.showDialog($scope,$mdDialog,$mdMedia,
+		//     'singleReportViewController','app/reports/emailTemplate.html',ev,
+		//     {},function(answer){
+		//       if(answer){
+		//       	$scope.email = answer;
+		//       }
+		//     },function(){
+		//       console.log('You cancelled the dialog.');
+		//     });
+ 	// }
+
+ 	$scope.sendEmail = function(){
+	  	var reportUrl = $location.path();
+ 		Email.sendEmail({
+ 			email: $scope.email,
+ 			reportUrl: reportUrl
+ 		})
+ 		.then(function(resp){
+ 			console.log(resp);
+ 		})
+ 		.catch(function(error){
+ 			console.log(error);
+ 		});
+ 	};
+
+ 	
+
  	$scope.initialize();
 });
+
