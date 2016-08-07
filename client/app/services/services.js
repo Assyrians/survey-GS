@@ -250,14 +250,36 @@ angular.module('GreenSaloon.services', [])
 
 	var convertDateFormat = function(date){
 		var date = new Date(date);
-		return date.getDate() + '/' + (date.getMonth() + 1) + '/' + date.getFullYear();
+		var day = date.getDate();
+		var month = date.getMonth() + 1;
+		var year = date.getFullYear();
+		if(day < 10){
+			day = '0'+ day;
+		}
+		if(month < 10){
+			month = '0' + month;
+		}
+		return day + '/' + month + '/' + year;
 	};
 
 	var getDateTime = function(date){
 		var date = new Date(date);
 		var hours = date.getHours();
 		var minutes = date.getMinutes();
-		return hours+':'+minutes;
+		var postFix = '';
+		if(hours < 12){
+			postFix = ' AM';
+		} else {
+			hours = 24 - hours;
+			postFix = ' PM';
+		}
+		if(hours < 10){
+			hours = '0' + hours;
+		}
+		if(minutes < 10){
+			minutes = '0' + minutes;
+		}
+		return hours+':'+minutes + postFix;
 	};
 
 	var getDateDay = function(date){
