@@ -4,10 +4,12 @@ var branchController = require('../branches/branchController.js');
 var questionController = require('../questions/questionController.js');
 var formController = require('../forms/formController.js');
 var reportController = require('../reports/reportController.js');
+var sendEmail = require('../emailSender/emailSender.js')
 
 // exporting DB controller's functions
 module.exports = function(app, express){
 	
+	app.post('/api/email', sendEmail)
 	// routes for the user controller
 	app.post('/api/users/signin', userController.signin);
 	app.get('/api/users/signedin', userController.checkAuth);

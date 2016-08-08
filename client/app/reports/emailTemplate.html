@@ -1,0 +1,25 @@
+<md-dialog aria-label="Email Address"  ng-cloak style='width: 70%;'>
+ <center> <form>
+    <md-toolbar>
+      <div class="md-toolbar-tools myToolbar">
+        <span flex></span>
+      </div>
+    </md-toolbar>
+    <br>
+    <md-dialog-content>
+
+          <div>
+          <label for="email" class="editLabel col-lg-2 col-md-2 col-sm-2">&nbsp;&nbsp;&nbsp;&nbsp;Email</label>
+          <input name='email' type="email" 
+            ng-model="email"
+            placeholder="Enter your email here" value="{email}" class="editInput col-lg-8 col-md-8 col-sm-8 form-control"/><br><br>
+        </div>
+    </md-dialog-content>
+    <md-dialog-actions layout="row">
+      <span flex></span>
+      <md-button  ng-click="sendEmail()" class="btn btn-default">
+       Send Email
+      </md-button>
+    </md-dialog-actions>
+  </form> </center>
+</md-dialog>
