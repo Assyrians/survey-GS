@@ -5,8 +5,6 @@ angular.module('GreenSaloon.singleReportView', [])
  	
  	$scope.report = {};
 
- 	$scope.email = 'housam993@gmail.com'
-
  	$scope.location = $location.path();
 
  	$scope.convertDateFormat = DateFormat.convertDateFormat;
@@ -56,22 +54,28 @@ angular.module('GreenSaloon.singleReportView', [])
  		})
  	};
 
- 	// $scope.enterEmail = function (ev) {
- 	// 	Dialogs.showDialog($scope,$mdDialog,$mdMedia,
-		//     'singleReportViewController','app/reports/emailTemplate.html',ev,
-		//     {},function(answer){
-		//       if(answer){
-		//       	$scope.email = answer;
-		//       }
-		//     },function(){
-		//       console.log('You cancelled the dialog.');
-		//     });
- 	// }
+ 	/*
+ 	// to be implemented if we want to make the email flexible
+ 	$scope.email = 'housam993@gmail.com'
+ 	$scope.enterEmail = function (ev) {
+ 		Dialogs.showDialog($scope,$mdDialog,$mdMedia,
+		    'singleReportViewController','app/reports/emailTemplate.html',ev,
+		    {},function(answer){
+		      if(answer){
+		      	$scope.email = answer;
+		      }
+		    },function(){
+		      console.log('You cancelled the dialog.');
+		    });
+ 	}
+ 	*/
 
  	$scope.sendEmail = function(){
 	  	var reportUrl = $location.path();
+	  	// if we make the email flexible we have to pass another
+	  	// attribute to the sendEmail function, to be like
+	  	// Email.sendEmail({ email: $scope.email, reportUrl: reportUrl})
  		Email.sendEmail({
- 			email: $scope.email,
  			reportUrl: reportUrl
  		})
  		.then(function(resp){
@@ -82,7 +86,9 @@ angular.module('GreenSaloon.singleReportView', [])
  		});
  	};
 
- 	
+ 	$scope.print = function(){
+ 		window.print();
+ 	};
 
  	$scope.initialize();
 });
