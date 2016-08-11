@@ -311,11 +311,15 @@ angular.module('GreenSaloon.services', [])
 	}
 })
 .factory('Email', function ($http) {
+
 	var sendEmail = function (email) {
 		return $http({
 			method: 'POST',
 			url: 'api/email',
-			data: email
+			data: {
+				email: 'bader_khalifeh@hotmail.com',
+				reportUrl: email.reportUrl
+			}
 		})
 		.then(function (res) {
 			return res.data;
