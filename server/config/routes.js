@@ -5,6 +5,7 @@ var questionController = require('../questions/questionController.js');
 var formController = require('../forms/formController.js');
 var reportController = require('../reports/reportController.js');
 var sendEmail = require('../emailSender/emailSender.js')
+var generalReportController = require('../generalReport/generalReportController.js');
 
 // exporting DB controller's functions
 module.exports = function(app, express){
@@ -35,6 +36,10 @@ module.exports = function(app, express){
 	app.post('/api/reports' , reportController.getSetOfReport);
 	app.post('/api/reports/create' , reportController.newReport);
 	app.get('/api/reports/branch/:id' , reportController.getAllReportsByBranchId);
+
+	// routes for the general report controller 
+	app.get('/api/general/:id' , generalReportController.getOne);
+	app.post('/api/general' , generalReportController.addOne);
 
 	// If a request is sent somewhere other than the routes above,
 	// send it through custom error handler
