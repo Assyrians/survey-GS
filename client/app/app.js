@@ -43,7 +43,7 @@ angular.module('GreenSaloon', [
       templateUrl: 'app/reports/singleReportView.html',
       controller: 'singleReportViewController'
     })
-    .when('/grv',{
+    .when('/grv/:id',{
       templateUrl: 'app/reports/generalReportView.html',
       controller: 'generalReportViewController'
     })
