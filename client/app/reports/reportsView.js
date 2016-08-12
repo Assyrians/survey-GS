@@ -1,7 +1,7 @@
 angular.module('GreenSaloon.reportsView', [])
 
 .controller('reportsViewController', function ($scope, $window, $location, $routeParams,
-	Reports, Question, Branch, Forms, DateFormat) {
+	Reports, Question, Branch, Forms, DateFormat, GeneralReport) {
  	
 	var formType = 'Daily';
 	if($routeParams.RecId){
@@ -23,6 +23,8 @@ angular.module('GreenSaloon.reportsView', [])
  	$scope.convertDateFormat = DateFormat.convertDateFormat;
 	
 	$scope.data = {};
+
+	$scope.generalReportId = "";
 
 	$scope.intialize = function(){
 		Branch.getAllBranches()
@@ -128,14 +130,33 @@ angular.module('GreenSaloon.reportsView', [])
 				bestMark: $scope.bestMark,
 				worstMark: $scope.worstMark,
 				monthlyVisits: $scope.monthlyVisits
-			}
+			};
 
-			$window.localStorage.setItem('GeneralReport', JSON.stringify(generalReport));
+
+			GeneralReport.addOne(generalReport)
+			.then(function (report) {
+				console.log(report);
+				$scope.generalReportId=report._id
+			})
+			.catch(function (err) {
+				console.log(err)
+			})
+
+
+			//console.log(generalReport);
+
+			//$window.localStorage.setItem('GeneralReport', JSON.stringify(generalReport));
 		})
 		.catch(function(error){
 			console.log(error);
 		});
 	};
+
+	// $scope.showGeneralReport = function () {
+	// 	$location.path('/grv/'+$scope.generalReportId);
+	// }
+
+
 
 	$scope.intialize();
 

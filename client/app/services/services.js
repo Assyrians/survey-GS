@@ -371,3 +371,33 @@ angular.module('GreenSaloon.services', [])
   };
 
 })
+.factory('GeneralReport', function ($http) {
+
+	// a function for getting one general report depending on the id
+	var getOne = function (id) {
+		return $http({
+			method: 'GET',
+			url: '/api/general/'+id
+		})
+		.then(function(res){
+			return res.data;
+		});
+	};
+
+	// a function for creating new general report
+	var addOne = function (generalReport) {
+		return $http({
+			method: 'POST',
+			url: '/api/general',
+			data: generalReport
+		})
+		.then(function(res){
+			return res.data;
+		});
+	};
+
+	return {
+		getOne: getOne,
+		addOne: addOne
+	};
+})
