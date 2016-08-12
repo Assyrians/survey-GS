@@ -1,11 +1,19 @@
 angular.module('GreenSaloon.generalReportView', [])
 
-.controller('generalReportViewController', function ($scope, $window, $location){
+.controller('generalReportViewController', function ($scope, $window, $location, GeneralReport, $routeParams){
 
 	$scope.report = {};
 
 	$scope.initialize = function(){
-		$scope.report = JSON.parse($window.localStorage.getItem('GeneralReport'));//window.generalReport;
+		GeneralReport.getOne($routeParams.id)
+		.then(function (generalReport) {
+			$scope.report=generalReport;
+		})
+		.catch(function (err) {
+			console.log(err);
+		})
+		//$scope.report = JSON.parse($window.localStorage.getItem('GeneralReport'));//window.generalReport;
+
 	};
 
 	/*
