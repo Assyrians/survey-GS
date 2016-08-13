@@ -152,6 +152,16 @@ angular.module('GreenSaloon.services', [])
 		});
 	};
 
+	var getAll = function(){
+		return $http({
+			method: 'GET',
+			url: '/api/users'
+		})
+		.then(function(resp){
+			return resp;
+		});
+	};
+
 	var addOne = function (user) {
 		return $http({
 			method: 'POST',
@@ -176,6 +186,7 @@ angular.module('GreenSaloon.services', [])
 
 	return {
 		getOne: getOne,
+		getAll: getAll,
 		addOne: addOne,
 		deleteOne: deleteOne
 	};

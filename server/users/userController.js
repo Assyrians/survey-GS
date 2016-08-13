@@ -2,6 +2,17 @@ var User = require('./userModel.js');
 var jwt = require('jwt-simple');
 
 module.exports = {
+  getAll: function(req, res) {
+    User.find({})
+    .exec(function(err, users){
+      if(err){
+        res.status(500).send('Error Occured');
+      } else {
+        res.status(200).send(users);
+      }
+    });
+  },
+
   addOne: function(req, res) {
     var newUser = new User({
       username: req.body.username,
