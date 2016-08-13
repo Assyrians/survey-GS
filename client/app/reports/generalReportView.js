@@ -12,25 +12,7 @@ angular.module('GreenSaloon.generalReportView', [])
 		.catch(function (err) {
 			console.log(err);
 		})
-		//$scope.report = JSON.parse($window.localStorage.getItem('GeneralReport'));//window.generalReport;
-
 	};
-
-	/*
- 	// to be implemented if we want to make the email flexible
- 	$scope.email = 'housam993@gmail.com'
- 	$scope.enterEmail = function (ev) {
- 		Dialogs.showDialog($scope,$mdDialog,$mdMedia,
-		    'singleReportViewController','app/reports/emailTemplate.html',ev,
-		    {},function(answer){
-		      if(answer){
-		      	$scope.email = answer;
-		      }
-		    },function(){
-		      console.log('You cancelled the dialog.');
-		    });
- 	}
- 	*/
 
  	$scope.sendEmail = function(){
 	  	var reportUrl = $location.path();
@@ -42,6 +24,7 @@ angular.module('GreenSaloon.generalReportView', [])
  		})
  		.then(function(resp){
  			console.log(resp);
+ 			alert("تم ارسال التقرير الى البريد الإلكتروني بنجاح")
  		})
  		.catch(function(error){
  			console.log(error);

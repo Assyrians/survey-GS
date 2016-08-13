@@ -24,6 +24,8 @@ angular.module('GreenSaloon.reportsView', [])
 	
 	$scope.data = {};
 
+	$scope.branchName = "";
+
 	$scope.generalReportId = "";
 
 	$scope.intialize = function(){
@@ -39,7 +41,14 @@ angular.module('GreenSaloon.reportsView', [])
 	$scope.getReports = function(branchId){
 		if($scope.branchList){
 			branchId = $scope.branchList;
+			for (var i = 0; i < $scope.data.branches.length; i++) {
+				if($scope.data.branches[i]._id===branchId){
+					$scope.branchName = $scope.data.branches[i].branchName;
+					break;
+				}
+			}
 		}
+
 		Forms.getAll()
 		.then(function(forms){
 			var getFunc;
@@ -129,7 +138,10 @@ angular.module('GreenSaloon.reportsView', [])
 				avgMark: $scope.avgMark,
 				bestMark: $scope.bestMark,
 				worstMark: $scope.worstMark,
-				monthlyVisits: $scope.monthlyVisits
+				monthlyVisits: $scope.monthlyVisits,
+				branchName : $scope.branchName,
+				startDate: $scope.datepickerStart,
+				endDate:$scope.datepickerEnd
 			};
 
 

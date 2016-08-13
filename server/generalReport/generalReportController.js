@@ -15,13 +15,19 @@ module.exports ={
 		var bestMark = req.body.bestMark;
 		var worstMark = req.body.worstMark;
 		var monthlyVisits = req.body.monthlyVisits;
+		var branchName = req.body.branchName;
+		var startDate = req.body.startDate;
+		var endDate = req.body.endDate;
 
 		var generalReport = new GeneralReport({
 			questions :questions ,
 			avgMark : avgMark ,
 			worstMark : worstMark,
 			bestMark : bestMark ,
-			monthlyVisits : monthlyVisits
+			branchName : branchName,
+			monthlyVisits : monthlyVisits,
+			startDate : startDate,
+			endDate : endDate
 		})
 		console.log(generalReport);
 		generalReport.save(function (err , generalReport) {

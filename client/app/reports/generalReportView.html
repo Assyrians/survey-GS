@@ -2,20 +2,26 @@
 
 <table class="table table-bordered table-hover monthlyTable" id="monthlyTable">
   <tr>
-    <td class="td2Table">{{report.monthlyVisits}}</td>
-    <td class="tdTable">عدد الزيارات</td>
+    <td class="td2Table" colspan="2">{{report.branchName}}</td>
+    <td class="tdTable" colspan="2">الفرع</td>
   </tr>
   <tr>
-    <td class="td2Table">{{report.avgMark}}</td>
-    <td class="tdTable">المعدل</td>
+    <td>{{report.endDate | date : 'yyyy-MM-dd'}}</td>
+    <td>الى</td>
+    <td>{{report.startDate | date : 'yyyy-MM-dd'}}</td>
+    <td>من</td>
   </tr>
   <tr>
-    <td class="td2Table">{{report.bestMark}}</td>
-    <td class="tdTable">اعلى علامة</td>
+    <td class="td2Table" >{{report.avgMark}}</td>
+    <td class="tdTable" >المعدل</td>
+    <td class="td2Table" >{{report.monthlyVisits}}</td>
+    <td class="tdTable" >عدد الزيارات</td>
   </tr>
   <tr>
     <td class="td2Table">{{report.worstMark}}</td>
     <td class="tdTable">اقل علامة</td>
+    <td class="td2Table">{{report.bestMark}}</td>
+    <td class="tdTable">اعلى علامة</td>
   </tr>
 </table>
 
