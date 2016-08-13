@@ -9,7 +9,8 @@
     "Bader Khalifeh <bader.a.khalifeh@gmail.com>"
   ],
   "scripts": {
-    "lint": "jscs ./"
+    "lint": "jscs ./",
+    "postinstall": "npm install -g bower; bower install"
   },
   "repository": {
     "type": "git",
