@@ -21,7 +21,7 @@ var sendEmail = function(mailOptions){
 module.exports = function (req, res, next ) {
   var emailBody = 'الرجاء الضغط على الرابط التالي لمشاهدة التقرير\n\n';
   // todo: add heroku link to the report URL
-  emailBody += 'http://192.168.1.142:3000/#' + req.body.reportUrl;
+  emailBody += 'https://gs-survey.herokuapp.com/#' + req.body.reportUrl;
 
   var mailOptions = {
             to: req.body.email,
