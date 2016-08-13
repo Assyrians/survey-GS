@@ -5,6 +5,7 @@ angular.module('GreenSaloon', [
   'GreenSaloon.singleReportView',
   'GreenSaloon.generalReportView',
   'GreenSaloon.newReport',
+  'GreenSaloon.home',
   'ngRoute',
   'ngMaterial',
   'ngAnimate'
@@ -13,6 +14,7 @@ angular.module('GreenSaloon', [
   $routeProvider
     .when('/',{
       templateUrl: 'app/home/home.html',
+      controller: 'HomeController',
       authenticate: true
     })
     .when('/signin', {

@@ -1,0 +1,32 @@
+<md-dialog aria-label="User"  ng-cloak style='width: 30%;'>
+ <center> <form>
+    <md-toolbar>
+      <div class="md-toolbar-tools myToolbar">
+        <span flex></span>
+      </div>
+    </md-toolbar>
+    <br>
+    <md-dialog-content>
+
+          <div>
+          <input name='username' type="text" 
+            ng-model="user.username"
+            placeholder="ادخل اسم المستخدم هنا" value="{user.username}" class="editInput col-lg-8 col-md-8 col-sm-8 form-control"/>
+          <br><br>
+          <input name='password' type="text" 
+            ng-model="user.password"
+            placeholder="ادخل كلمة المرور هنا" value="{user.password}" class="editInput col-lg-8 col-md-8 col-sm-8 form-control"/>
+          <br><br>
+        </div>
+    </md-dialog-content>
+    <md-dialog-actions layout="row">
+      <span flex></span>
+      <md-button  ng-click="cancel()" class="btn btn-default">
+       الغاء
+      </md-button>
+      <md-button  ng-click="answer(user)" class="btn btn-default">
+       اضافة
+      </md-button>
+    </md-dialog-actions>
+  </form> </center>
+</md-dialog>
