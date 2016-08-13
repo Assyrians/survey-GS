@@ -7,7 +7,10 @@ var generalReportSchema = new schema ({
 	avgMark : Number,
 	bestMark : Number,
 	worstMark : Number,
-	monthlyVisits : Number
+	monthlyVisits : Number,
+	branchName : String,
+	startDate : Date,
+	endDate : Date
 });
 
 var GeneralReport = mongoose.model('GeneralReport', generalReportSchema);

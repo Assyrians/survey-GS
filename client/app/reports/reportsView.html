@@ -51,14 +51,14 @@
 
 <ul class="nav" id="reportsList" style="text-align:right ; font-size: large; display:block">
     <li ng-repeat="report in data.reports">
-    <a href="#/srv/{{report._id}}">{{convertDateFormat(report.date)}}</a>
+    <a href="#/srv/{{report._id}}" target="_blank">{{convertDateFormat(report.date)}}</a>
     </li>
 </ul>
 
 <table class="table table-bordered table-hover reportTabe" ng-if="!reportDateClicked&&data.reports" id="reportTable">
   <tr>
   <td>
-    <a href="#/grv/{{generalReportId}}" class="btn btn-primary" style="width: 100%;">التقرير الكلي</a>
+    <button ng-click="saveGeneralReport()" class="btn btn-primary" style="width: 100%;">التقرير الكلي</button>
   </td>
   </tr>
 </table>
