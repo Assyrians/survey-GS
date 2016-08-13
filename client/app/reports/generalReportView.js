@@ -1,6 +1,6 @@
 angular.module('GreenSaloon.generalReportView', [])
 
-.controller('generalReportViewController', function ($scope, $window, $location, GeneralReport, $routeParams){
+.controller('generalReportViewController', function ($scope, $window, $location, GeneralReport, $routeParams, Email){
 
 	$scope.report = {};
 
