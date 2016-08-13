@@ -15,6 +15,9 @@ module.exports = function(app, express){
 	app.post('/api/users/signin', userController.signin);
 	app.get('/api/users/signedin', userController.checkAuth);
 	app.get('/api/users/user/:id', userController.getOne);
+	app.get('/api/users', userController.getAll);
+	app.post('/api/users', userController.addOne);
+	app.put('/api/users', userController.deleteOne);
 
 	// routes for the branch controller
 	app.get('/api/branches' ,branchController.getAllBranches ) ;

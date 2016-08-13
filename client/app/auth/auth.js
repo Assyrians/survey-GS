@@ -5,9 +5,10 @@ angular.module('GreenSaloon.auth', [])
 	$scope.user = {};
 
 	$scope.signIn = function () {
+    var username = $scope.user.username;
     Auth.signin({username:$scope.user.username,password:$scope.user.password})
       .then(function (data) {
-        $window.localStorage.setItem('com.GS', data.token);
+        $window.localStorage.setItem('com.GS', username);
         $location.path('/');
       })
       .catch(function (error) {

@@ -1,0 +1,26 @@
+<md-dialog aria-label="User"  ng-cloak style='width: 30%;'>
+ <center> <form>
+    <md-toolbar>
+      <div class="md-toolbar-tools myToolbar">
+        <span flex></span>
+      </div>
+    </md-toolbar>
+    <br>
+    <md-dialog-content>
+      <table>
+        <tbody ng-repeat="user in data.users" ng-if="user.username!=='admin'">
+        <tr>
+          <td>{{user.username}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+          <td><a ng-click="answer(user)">حذف</a></td>
+        </tr>
+        </tbody>
+      </table>
+    </md-dialog-content>
+    <md-dialog-actions layout="row">
+      <span flex></span>
+      <md-button  ng-click="cancel()" class="btn btn-default">
+       الغاء
+      </md-button>
+    </md-dialog-actions>
+  </form> </center>
+</md-dialog>
