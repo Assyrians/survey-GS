@@ -150,10 +150,34 @@ angular.module('GreenSaloon.services', [])
 		.then(function (res){
 			return res.data;
 		});
-	}
+	};
+
+	var addOne = function (user) {
+		return $http({
+			method: 'POST',
+			url: '/api/users',
+			data: user
+		})
+		.then(function (res) {
+			return res;
+		});
+	};
+
+	var deleteOne = function (user){
+		return $http({
+			method: 'PUT',
+			url: '/api/users',
+			data: user
+		})
+		.then(function(res) {
+			return res;
+		});
+	};
 
 	return {
-		getOne: getOne
+		getOne: getOne,
+		addOne: addOne,
+		deleteOne: deleteOne
 	};
 })
 

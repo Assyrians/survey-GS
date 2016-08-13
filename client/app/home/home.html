@@ -7,8 +7,8 @@
             <a href='#/ndr/1' class="btn btn-lg btn-primary btn-block">التقرير اليومي لمتابعة الشروط الصحية والنظافة</a>
             <a href='#/rpv/1' class="btn btn-lg btn-primary btn-block">جميع التقارير الدورية</a>
             <a href='#/dpv/1' class="btn btn-lg btn-primary btn-block">جميع التقارير اليومية</a>
-            <a class="btn btn-lg btn-primary btn-block" ng-if="username==='admin'">اضافة مستخدم</a>
-            <a class="btn btn-lg btn-primary btn-block" ng-if="username==='admin'">حذف مستخدم</a>
+            <a ng-click="addUser($event)" class="btn btn-lg btn-primary btn-block" ng-if="username==='admin'">اضافة مستخدم</a>
+            <a ng-click="deleteUser($event)" class="btn btn-lg btn-primary btn-block" ng-if="username==='admin'">حذف مستخدم</a>
             <a ng-click="signout()" class="btn btn-lg btn-primary btn-block">تسجيل خروج</a>      
         </div>     
     </div>

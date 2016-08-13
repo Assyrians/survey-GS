@@ -5,6 +5,7 @@ angular.module('GreenSaloon', [
   'GreenSaloon.singleReportView',
   'GreenSaloon.generalReportView',
   'GreenSaloon.newReport',
+  'GreenSaloon.home',
   'ngRoute',
   'ngMaterial',
   'ngAnimate'
@@ -13,6 +14,7 @@ angular.module('GreenSaloon', [
   $routeProvider
     .when('/',{
       templateUrl: 'app/home/home.html',
+      controller: 'HomeController',
       authenticate: true
     })
     .when('/signin', {
@@ -54,13 +56,6 @@ angular.module('GreenSaloon', [
     // We add our $httpInterceptor into the array
     // of interceptors. Think of it like middleware for your ajax calls
     $httpProvider.interceptors.push('AttachTokens');
-})
-.controller('HomeController', function($scope, $window, Auth){
-  $scope.username = $window.localStorage.getItem('com.GS');
-  
-  $scope.signout = function(){
-    Auth.signout();
-  };
 })
 .factory('AttachTokens', function ($window) {
   // this is an $httpInterceptor
