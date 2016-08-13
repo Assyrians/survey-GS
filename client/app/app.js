@@ -55,6 +55,13 @@ angular.module('GreenSaloon', [
     // of interceptors. Think of it like middleware for your ajax calls
     $httpProvider.interceptors.push('AttachTokens');
 })
+.controller('HomeController', function($scope, $window, Auth){
+  $scope.username = $window.localStorage.getItem('com.GS');
+  
+  $scope.signout = function(){
+    Auth.signout();
+  };
+})
 .factory('AttachTokens', function ($window) {
   // this is an $httpInterceptor
   // its job is to stop all out going request
