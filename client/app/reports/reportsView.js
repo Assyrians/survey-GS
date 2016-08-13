@@ -161,7 +161,7 @@ angular.module('GreenSaloon.reportsView', [])
 		GeneralReport.addOne($scope.generalReport)
 			.then(function (report) {
 				console.log(report);
-				$window.open("#/grv/" + report._id,'_blank');
+				$window.open("#/grv/" + report._id,'newwindow');
 			})
 			.catch(function (err) {
 				console.log(err)
