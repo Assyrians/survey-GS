@@ -9,6 +9,9 @@
     "bower_components",
     "client/lib"
   ],
+  "scripts": {
+    "postinstall":"npm install -g bower; bower install"
+  },
   "dependencies": {
     "angular": "latest",
     "angular-route": "latest",
