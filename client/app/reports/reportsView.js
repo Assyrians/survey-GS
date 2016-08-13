@@ -144,15 +144,7 @@ angular.module('GreenSaloon.reportsView', [])
 				endDate:$scope.datepickerEnd
 			};
 
-
-			GeneralReport.addOne(generalReport)
-			.then(function (report) {
-				console.log(report);
-				$scope.generalReportId=report._id
-			})
-			.catch(function (err) {
-				console.log(err)
-			})
+			$scope.generalReport = generalReport;
 
 
 			//console.log(generalReport);
@@ -162,6 +154,18 @@ angular.module('GreenSaloon.reportsView', [])
 		.catch(function(error){
 			console.log(error);
 		});
+	};
+
+	$scope.saveGeneralReport = function(){
+		console.log(1);
+		GeneralReport.addOne($scope.generalReport)
+			.then(function (report) {
+				console.log(report);
+				$window.open("#/grv/" + report._id,'_blank');
+			})
+			.catch(function (err) {
+				console.log(err)
+			})
 	};
 
 	// $scope.showGeneralReport = function () {

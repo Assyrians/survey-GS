@@ -58,7 +58,7 @@
 <table class="table table-bordered table-hover reportTabe" ng-if="!reportDateClicked&&data.reports" id="reportTable">
   <tr>
   <td>
-    <a href="#/grv/{{generalReportId}}" class="btn btn-primary" style="width: 100%;"  target="_blank">التقرير الكلي</a>
+    <button ng-click="saveGeneralReport()" class="btn btn-primary" style="width: 100%;">التقرير الكلي</button>
   </td>
   </tr>
 </table>
