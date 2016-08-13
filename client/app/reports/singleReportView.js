@@ -80,6 +80,7 @@ angular.module('GreenSaloon.singleReportView', [])
  		})
  		.then(function(resp){
  			console.log(resp);
+ 			arert("تم ارسال التقرير")
  		})
  		.catch(function(error){
  			console.log(error);
