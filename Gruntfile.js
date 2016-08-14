@@ -92,7 +92,7 @@ module.exports = function(grunt) {
     'cssmin'
   ]);
 
-  grunt.registerTask('heroku:production', ['concat', 'uglify', 'cssmin']);
+  grunt.registerTask('heroku:production', ['build']);
 
   grunt.registerTask('upload', function(n) {
     if(grunt.option('prod')) {
