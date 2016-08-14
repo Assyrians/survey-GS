@@ -11,7 +11,7 @@
   "scripts": {
     "start": "nodemon server/server.js",
     "lint": "jscs ./",
-    "postinstall": "npm install -g bower; bower install; ./node_modules/grunt-cli/bin/grunt build"
+    "postinstall": "npm install -g bower; bower install;"
 
   },
   "repository": {
