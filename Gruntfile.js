@@ -9,7 +9,7 @@ module.exports = function(grunt) {
         separator: ';'
       },
       dist: {
-        'client/dist/<%= pkg.name %>.js': [
+        src: [
         'client/app/auth/auth.js',
         'client/app/services/services.js',
         'client/app/reports/newReport.js',
@@ -18,7 +18,8 @@ module.exports = function(grunt) {
         'client/app/reports/generalReportView.js',
         'client/app/home/home.js',
         'client/app/app.js'
-        ] 
+        ],
+        dest: 'client/dist/<%= pkg.name %>.js'
       }
     },
 
@@ -90,6 +91,8 @@ module.exports = function(grunt) {
     'uglify',
     'cssmin'
   ]);
+
+  grunt.registerTask('heroku:production', ['build']);
 
   grunt.registerTask('upload', function(n) {
     if(grunt.option('prod')) {

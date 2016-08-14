@@ -352,7 +352,7 @@ angular.module('GreenSaloon.services', [])
 			method: 'POST',
 			url: 'api/email',
 			data: {
-				email: 'tawfik.kahwaje@gmail.com',//'ahmad@alayyangroupco.com',
+				email: 'ahmad@alayyangroupco.com',
 				reportUrl: email.reportUrl
 			}
 		})

@@ -11,7 +11,8 @@
   "scripts": {
     "start": "nodemon server/server.js",
     "lint": "jscs ./",
-    "postinstall": "npm install -g bower; bower install"
+    "postinstall": "npm install -g bower; bower install;"
+
   },
   "repository": {
     "type": "git",
