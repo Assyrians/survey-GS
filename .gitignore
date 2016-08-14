@@ -34,6 +34,7 @@ jspm_packages
 
 # Build files
 dist
+client/dist
 
 # Floobits
 .floo
