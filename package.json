@@ -9,6 +9,7 @@
     "Bader Khalifeh <bader.a.khalifeh@gmail.com>"
   ],
   "scripts": {
+    "start": "nodemon server/server.js",
     "lint": "jscs ./",
     "postinstall": "npm install -g bower; bower install"
   },
@@ -25,8 +26,6 @@
     "bower": "latest",
     "browser-sync": "^1.5.7",
     "clone-stats": "0.0.1",
-    "gulp": "^3.8.5",
-    "gulp-nodemon": "^1.0.4",
     "gulp-shell": "^0.2.7",
     "pre-commit": "^1.1.1"
   },
@@ -40,6 +39,13 @@
     "morgan": "^1.1.1",
     "nodemailer": "^2.5.0",
     "nodemailer-smtp-transport": "^2.6.0",
-    "request": "^2.36.0"
+    "request": "^2.36.0",
+    "grunt": "^0.4.4",
+    "grunt-contrib-concat": "^0.3.0",
+    "grunt-contrib-uglify": "^0.4.0",
+    "grunt-contrib-watch": "^0.6.1",
+    "grunt-shell": "^0.6.4",
+    "grunt-contrib-cssmin": "^0.9.0",
+    "grunt-nodemon": "^0.2.1"
   }
 }
