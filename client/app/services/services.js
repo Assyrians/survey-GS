@@ -305,7 +305,7 @@ angular.module('GreenSaloon.services', [])
 		if(hours < 12){
 			postFix = ' AM';
 		} else {
-			hours = 24 - hours;
+			hours = hours - 12;
 			postFix = ' PM';
 		}
 		if(hours < 10){
